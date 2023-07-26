@@ -1,0 +1,5 @@
+file(GLOB CU_SRCS *.cu)
+add_library(cuda_kernels STATIC ${CU_SRCS})
+set_property(TARGET cuda_kernels PROPERTY POSITION_INDEPENDENT_CODE  ON)
+set_property(TARGET cuda_kernels PROPERTY CUDA_RESOLVE_DEVICE_SYMBOLS  ON)
+target_link_libraries(cuda_kernels PUBLIC -lcublas -lcudart -lcurand)
